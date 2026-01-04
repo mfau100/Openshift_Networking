@@ -42,3 +42,23 @@ Is this ok [y/N]:
      Loaded: loaded (/usr/lib/systemd/system/openvswitch.service; disabled; preset: disabled)
      Active: inactive (dead)
 ```
+```
+[mfau@mfau-thinkpadx1carbon5th ~]$ systemctl status openvswitch
+● openvswitch.service - Open vSwitch
+     Loaded: loaded (/usr/lib/systemd/system/openvswitch.service; enabled; preset: disabled)
+    Drop-In: /usr/lib/systemd/system/service.d
+             └─10-timeout-abort.conf
+     Active: active (exited) since Sun 2025-12-28 09:13:20 EST; 24s ago
+ Invocation: 2c1c58d886164df6b0005d5cb280aa8e
+   Main PID: 11621 (code=exited, status=0/SUCCESS)
+   Mem peak: 1M
+        CPU: 2ms
+
+Dec 28 09:13:19 mfau-thinkpadx1carbon5th.remote.csb systemd[1]: Starting openvswitch.service - Open vSwitch...
+Dec 28 09:13:20 mfau-thinkpadx1carbon5th.remote.csb systemd[1]: Finished openvswitch.service - Open vSwitch.
+[mfau@mfau-thinkpadx1carbon5th ~]$ ovs-vsctl show
+ovs-vsctl: unix:/var/run/openvswitch/db.sock: database connection failed (Permission denied)
+[mfau@mfau-thinkpadx1carbon5th ~]$ sudo ovs-vsctl show
+7bbc2ba1-dbcd-4924-af19-769f1216fa50
+    ovs_version: "3.4.1-1.fc42"
+```
